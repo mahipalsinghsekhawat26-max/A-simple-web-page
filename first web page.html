@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Interactive Web Page</title>
+    <style>
+        /* Basic student-level CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f2ff;
+            padding: 20px;
+        }
+        h1 {
+            color: red;
+        }
+        .project-box {
+            background-color: white;
+            border: 2px solid black;
+            padding: 15px;
+            margin-bottom: 20px;
+            width: 80%;
+            border-radius: 5px;
+        }
+        button {
+            background-colour:indigo blue;
+            padding: 8px 15px;
+            cursor: pointer;
+            border: 1px solid gray;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: darkgray;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>A Simple Web page</h1>
+    <p>Here are Two simple interactive tools I built using JavaScript.</p>
+
+    <div class="project-box">
+        <h2>1. Stock Profit/Loss Checker</h2>
+        <p>Enter Buy Price (₹): <input type="number" id="buyPrice"></p>
+        <p>Enter Sell Price (₹): <input type="number" id="sellPrice"></p>
+        <button onclick="checkProfit()">Calculate Profit/Loss</button>
+        
+        <p id="stockResult" style="font-weight: bold; font-size: 18px;"></p>
+    </div>
+
+    <div class="project-box">
+        <h2>2. Percentage Maker</h2>
+        <p>Marks Obtained: <input type="number" id="obtainedMarks"></p>
+        <p>Total Marks: <input type="number" id="totalMarks"></p>
+        <button onclick="calculatePercentage()">Calculate Percentage</button>
+        
+        <p id="percentResult" style="font-weight: bold; font-size: 18px;"></p>
+    </div>
+
+    <script>
+        // JS for Example 1: Stock Profit Checker
+        function checkProfit() {
+            var buy = document.getElementById("buyPrice").value;
+            var sell = document.getElementById("sellPrice").value;
+            var profit = sell - buy;
+            
+            // Check if inputs are empty
+            if (buy === "" || sell === "") {
+                document.getElementById("stockResult").innerHTML = "Please enter both prices.";
+                document.getElementById("stockResult").style.color = "black";
+                return;
+            }
+            
+            if (profit > 0) {
+                document.getElementById("stockResult").innerHTML = "Great! You made a profit of ₹" + profit;
+                document.getElementById("stockResult").style.color = "green";
+            } else if (profit < 0) {
+                document.getElementById("stockResult").innerHTML = "Oh no, you have a loss of ₹" + Math.abs(profit);
+                document.getElementById("stockResult").style.color = "red";
+            } else {
+                document.getElementById("stockResult").innerHTML = "No profit, no loss.";
+                document.getElementById("stockResult").style.color = "blue";
+            }
+        }
+
+        // JS for Example 2: Percentage Maker
+        function calculatePercentage() {
+            var obtained = document.getElementById("obtainedMarks").value;
+            var total = document.getElementById("totalMarks").value;
+            
+            // Check if inputs are empty
+            if (obtained === "" || total === "") {
+                document.getElementById("percentResult").innerHTML = "Please enter both marks.";
+                document.getElementById("percentResult").style.color = "black";
+                return;
+            }
+
+            // Prevent dividing by zero
+            if (total <= 0) {
+                document.getElementById("percentResult").innerHTML = "Total marks must be greater than 0!";
+                document.getElementById("percentResult").style.color = "red";
+            } else {
+                var percentage = (obtained / total) * 100;
+                // .toFixed(2) rounds the number to 2 decimal places
+                document.getElementById("percentResult").innerHTML = "Your percentage is: " + percentage.toFixed(2) + "%";
+                document.getElementById("percentResult").style.color = "darkblue";
+            }
+        }
+    </script>
+
+</body>
+</html>
