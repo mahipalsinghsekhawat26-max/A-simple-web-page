@@ -3,7 +3,6 @@
 <head>
     <title>My Interactive Web Page</title>
     <style>
-        /* Basic student-level CSS */
         body {
             font-family: Arial, sans-serif;
             background-color: #e6f2ff;
@@ -60,13 +59,12 @@
     </div>
 
     <script>
-        // JS for Example 1: Stock Profit Checker
+        // profit,loss checker 
         function checkProfit() {
             var buy = document.getElementById("buyPrice").value;
             var sell = document.getElementById("sellPrice").value;
             var profit = sell - buy;
             
-            // Check if inputs are empty
             if (buy === "" || sell === "") {
                 document.getElementById("stockResult").innerHTML = "Please enter both prices.";
                 document.getElementById("stockResult").style.color = "black";
@@ -85,7 +83,7 @@
             }
         }
 
-        // JS for Example 2: Percentage Maker
+        // Percentage Maker
         function calculatePercentage() {
             var obtained = document.getElementById("obtainedMarks").value;
             var total = document.getElementById("totalMarks").value;
@@ -97,7 +95,6 @@
                 return;
             }
 
-            // Prevent dividing by zero
             if (total <= 0) {
                 document.getElementById("percentResult").innerHTML = "Total marks must be greater than 0!";
                 document.getElementById("percentResult").style.color = "red";
